@@ -1,0 +1,95 @@
+LOWERLETTER		[a-z]
+UPPERLETTER		[A-Z]
+IF				if
+FI				fi
+EL				el
+LE				le
+LOOP			loop
+POOL			pool
+PRINT			print
+GET				get 
+WORD			({UPPERLETTER}|{LOWERLETTER})+
+DIGIT			[0-9]
+FLOAT			[+-]?{DIGIT}*\.{DIGIT}+
+NUMBER			{DIGIT}+
+NEWLINE			\n
+SPACE			[\t ]+
+COMMA			","
+DOT				"."
+COLON			":"
+SEMICOLON		";"
+LP				"("
+LB				"{"
+LS				"["
+RP				")"
+RB				"}"
+RS				"]"		
+ASSIGNMENT		"="
+EQUALS			"=="
+NOTEQUALS		"!="
+NOT				"!"
+GREATER			">"
+LESS			"<"
+GREATEQUAL		">="
+LESSEQUAL		"<="
+MULTIPLICATION	"*"
+DIVISION		(":"|"/")
+SUBSTRACTION	"-"
+ADDITION		"+"
+MODULO			"%"
+CONJUNCTION		"&"
+DISJUNCTION		"|"
+IMPLICATION		"=>"
+BICONDITIONAL	"<=>"
+COMMENT			"//".*	
+%%%%%%%%%%%%%%%%
+{IF}			printf("IF");
+{FI}			printf("FI");
+{EL}			printf("EL");
+{LE}			printf("LE");
+{LOOP}			printf("LOOP");
+{POOL}			printf("POOL");
+{PRINT}			printf("PRINT");
+{GET}			printf("GET");
+{WORD}			printf("WORD");
+{DIGIT}			printf("DIGIT");
+{NUMBER}		printf("NUMBER");
+{FLOAT}			printf("FLOAT");
+{NEWLINE}		printf("\n");
+{SPACE}			;
+{COMMA}			printf("COMMA");
+{DOT}			printf("DOT");
+{COLON}			printf("COLON");
+{SEMICOLON}		printf("SEMICOLON");
+{LP}			printf("LP");
+{LB}			printf("LB");
+{LS}			printf("LS");
+{RP}			printf("RP");
+{RB}			printf("RB");
+{RS}			printf("RS");		
+{ASSIGNMENT}	printf("ASSIGNMENT");
+{EQUALS}		printf("EQUAL");
+{NOTEQUALS}		printf("NOTEQUAL");
+{NOT}			printf("NOT");
+{GREATER}		printf("GREATER");
+{LESS}			printf("LESS");
+{GREATEQUAL}	printf("GREATEQUAL");
+{LESSEQUAL}		printf("LESSEQUAL");
+{MULTIPLICATION}printf("MULTIPLICATION");
+{DIVISION}		printf("DIVISION");
+{SUBSTRACTION}	printf("SUBTRACTION");
+{ADDITION}		printf("ADDITION");
+{MODULO}		printf("MODULO");
+{CONJUNCTION}	printf("CONJUNCTION");
+{DISJUNCTION}	printf("DISJUNCTION");
+{IMPLICATION}	printf("IMPLICATION");
+{BICONDITIONAL}	printf("BICONDITIONAL");
+{COMMENT}		;
+%%%%%%%%%%%%%%%%
+int  yywrap(void){
+	return 1;
+}
+int main(void){
+	yylex();
+	return 0;
+}
